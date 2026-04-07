@@ -6,18 +6,36 @@ export default function frameworkListSearchFilter() {
     const [selectedTag, setSelectedTag] = useState("");
 
 
+
+    /*Inisialisasi DataForm*/
+
+    const [dataForm, setDataForm] = useState({
+        searchTerm: "",
+        selectedTag: "",
+        /*Tambah state lain beserta default value*/
+    });
+     
+    const _searchTerm = dataForm.searchTerm.toLowerCase();
+    const _selectedTag = dataForm.selectedTag.toLowerCase();
+
+    const handleChange = (evt) => {
+        const { name, value } = evt.target;
+        setDataForm({
+            ...dataForm,
+            [name]: value,
+        });
+    };
     // deklarasi logic untuk search dan filter
-    const _searchTerm = searchTerm.toLowerCase();
 
     const filteredFrameworks = frameworkData.filter((framework) => {
         const matchesSearch =
             framework.name.toLowerCase().includes(_searchTerm) ||
             framework.description.toLowerCase().includes(_searchTerm) ||
             framework.details.developer.toLowerCase().includes(_searchTerm);
-            
-                
 
-        const matchesTag = selectedTag ? framework.tags.includes(selectedTag) : true;
+
+
+        const matchesTag = dataForm.selectedTag ? framework.tags.includes(dataForm.selectedTag) : true;
 
         return matchesSearch && matchesTag;
     });
@@ -35,19 +53,21 @@ export default function frameworkListSearchFilter() {
             ...
             <input
                 type="text"
-                name="searchTerm"
                 placeholder="Search framework..."
+                value ={dataForm.searchTerm}
                 className="w-full p-2 border border-gray-300 rounded mb-4"
-                onChange={(e) => setSearchTerm(e.target.value)}
-                
+                name="searchTerm"
+                onChange={handleChange}
+
             />
 
             <select
                 name="selectedTag"
+                value={dataForm.selectedTag}
                 className="w-full p-2 border border-gray-300 rounded mb-4"
-                onChange={(e) => setSelectedTag(e.target.value)}
-          
-          >
+                onChange={handleChange}
+
+            >
                 <option value="">All Tags</option>
                 {allTags.map((tag, index) => (
                     <option key={index} value={tag}>

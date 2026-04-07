@@ -3,11 +3,12 @@ import './tailwind.css';
 import "./FrameworkList.jsx"
 import FrameworkList from "./FrameworkList.jsx";
 import FrameworkListSearchFilter from "./FrameworkListSearchFilter.jsx";
-
+import ResponsiveGrid from "./ResponsiveGrid.jsx";
 
 createRoot(document.getElementById("root"))
     .render(
         <div>
-            <FrameworkListSearchFilter/>
+        {/*     <FrameworkListSearchFilter/> */}
+        <ResponsiveGrid/>
         </div>
     )
