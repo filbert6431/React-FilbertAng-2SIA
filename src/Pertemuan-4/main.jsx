@@ -8,7 +8,8 @@ import ResponsiveGrid from "./ResponsiveGrid.jsx";
 createRoot(document.getElementById("root"))
     .render(
         <div>
-        {/*     <FrameworkListSearchFilter/> */}
-        <ResponsiveGrid/>
+          <FrameworkList/>
+          <FrameworkListSearchFilter/> 
+          {/* <ResponsiveGrid/> */}
         </div>
     )

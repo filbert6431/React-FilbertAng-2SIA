@@ -14,7 +14,14 @@ export default function FrameworkList() {
             key={item.id} 
             className="flex flex-col justify-between p-6 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
           >
-            <div classname ="hover:rotate-2">
+            {item.image && (
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-full h-48 object-cover rounded-xl mb-4"
+              />
+            )}
+            <div className="hover:rotate-2">
               <div className="flex justify-between items-start mb-2 ">
                 <h2 className="text-xl font-bold text-gray-800 tracking-tight">
                   {item.name}

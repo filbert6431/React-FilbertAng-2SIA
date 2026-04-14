@@ -20,7 +20,7 @@ export default function frameworkListSearchFilter() {
 
     const handleChange = (evt) => {
         const { name, value } = evt.target;
-        setDataForm({
+        setDataForm({   
             ...dataForm,
             [name]: value,
         });
@@ -50,7 +50,6 @@ export default function frameworkListSearchFilter() {
             <h1 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">
                 Framework Explorer
             </h1>
-            ...
             <input
                 type="text"
                 placeholder="Search framework..."
@@ -83,7 +82,14 @@ export default function frameworkListSearchFilter() {
                         key={item.id}
                         className="flex flex-col justify-between p-6 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
                     >
-                        <div classname="hover:rotate-2">
+                        {item.image && (
+                            <img
+                                src={item.image}
+                                alt={item.name}
+                                className="w-full h-48 object-cover rounded-xl mb-4"
+                            />
+                        )}
+                        <div className="hover:rotate-2">
                             <div className="flex justify-between items-start mb-2 ">
                                 <h2 className="text-xl font-bold text-gray-800 tracking-tight">
                                     {item.name}

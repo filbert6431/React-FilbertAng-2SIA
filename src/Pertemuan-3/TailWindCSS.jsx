@@ -80,6 +80,7 @@ function ShadowEffects(){
     )
 }
 
+// minta GPT dari pak Fikri
 const DesignSpecCard = ({ title, content, children }) => {
   return (
     <div className="design-spec-container" style={{ border: '1px solid #ddd', borderRadius: '8px', padding: '20px', marginBottom: '20px' }}>

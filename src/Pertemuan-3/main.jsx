@@ -8,7 +8,7 @@ import HitungGajiForm from "./HitungGajiForm";
 createRoot(document.getElementById("root"))
     .render(
         <div>
-            {/* <TailWindCSS/> */}
+            { <TailWindCSS/> }
             <UserForm/>
             <HitungGajiForm/>
         </div>
