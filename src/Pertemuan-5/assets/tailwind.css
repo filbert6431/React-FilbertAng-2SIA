@@ -10,22 +10,22 @@
     src: url("/fonts/Poppins-Regular.ttf");
 }
 
-@theme {
-   --font-barlow: "barlow", sans-serif;
-   --font-Poppins: "Poppins", sans-serif;
-
+.body {
+    @apply font-barlow;
+   
 }
 
-body {
-    @apply font-barlow;
+@theme {
+    --font-barlow: "barlow", sans-serif;
+    --font-Poppins: "Poppins", sans-serif;
 
-    --color-latar: #f3f4f6;
-    --color-teks: #374151; 
-    --color-teks-samping: #6b7280;
-    --color-garis: #e5e7eb; 
-    --color-hijau: #00B074; 
-    --color-merah: #ef4444; 
+    --color-hijau: #00B074;
+    --color-merah: #ef4444;
     --color-biru: #3b82f6;
-    --color-kuning: #f59e0b; 
+    --color-kuning: #f59e0b;
+    --color-latar: #f3f4f6;
+    --color-teks: #374151;
+    --color-teks-samping: #6b7280;
+    --color-garis: #e5e7eb;
 }
 

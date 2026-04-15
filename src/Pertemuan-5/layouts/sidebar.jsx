@@ -1,12 +1,14 @@
+import { BsPeople } from "react-icons/bs"; 
+import { TbDashboardOff } from "react-icons/tb"; 
+import { FaClipboardList } from "react-icons/fa"; 
 import { HiAcademicCap } from "react-icons/hi";
-
-<HiAcademicCap/>
 
 export default function Sidebar() {
     return (
         <div id="sidebar" className="flex min-h-screen w-90 flex-col bg-white p-10 shadow-lg">
             {/* Logo */}
             <div id="sidebar-logo" className="flex flex-col">
+                <HiAcademicCap className="text-7xl"/>
                 <span id="logo-title" className="font-poppins text-[48px] text-gray-900">
 		                Sedap <b id="logo-dot" className="text-hijau">.</b>
 		            </span>
@@ -15,21 +17,24 @@ export default function Sidebar() {
 
             {/* List Menu */}
             <div id="sidebar-menu" className="mt-10">
-                <ul id="menu-list" className="space-y-3">
+                <ul id="menu-list" className="space-y-3 ">
                     <li>
 	                    <div id="menu-1" className="hover:text-hijau flex cursor-pointer items-center
                          rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold">
-                            
+                        <TbDashboardOff className="text-xl mr-2 "/>
                          Dashboard</div>
 	                  </li>
                     <li>
 	                    <div id="menu-2" className="hover:text-hijau flex cursor-pointer items-center
-                         rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold">
+                         rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold space-x-2">
+                           <FaClipboardList  className="text-xl mr-2"/>
+                           
                             Orders</div>
 	                  </li>
 	                  <li>
 	                    <div id="menu-3" className="hover:text-hijau flex cursor-pointer items-center 
                         rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold">
+                            <BsPeople className="text-xl mr-2"/> 
                             Customers</div>
 	                  </li>
                 </ul>
@@ -45,7 +50,7 @@ export default function Sidebar() {
                             <span className="text-gray-600 flex items-center">Add Menus</span>
                         </div>
                     </div>
-                    <img id="footer-avatar" className = "text-gray-600 flex items-center" src="https://avatar.iran.liara.run/public/28" />
+                    <img id="footer-avatar" className = "text-gray-600 flex items-center" src="<FaClipboardList />https://avatar.iran.liara.run/public/28" />
                 </div>
                 <span id="footer-brand" className="text-gray-600 flex items-center">Sedap Restaurant Admin Dashboard</span>
                 <p id="footer-copyright" className="text-gray-600 flex items-center">&copy; 2025 All Right Reserved</p>
