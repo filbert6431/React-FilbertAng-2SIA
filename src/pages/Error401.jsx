@@ -5,11 +5,7 @@ export default function Error401() {
     <div style={styles.container}>
       <div style={styles.content}>
         {/* Error Image */}
-        <img 
-          src={new URL('../assets/error401.png', import.meta.url).href} 
-          alt="Error 401" 
-          style={styles.image}
-        />
+
         
         <h1 style={styles.errorCode}>401</h1>
         

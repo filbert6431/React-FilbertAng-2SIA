@@ -170,3 +170,138 @@ Dokumentasi dibuat pada: 22 April 2026
 Repository: React-FilbertAng-2SIA
 Issue Resolved: ✅ Push/Merge Error
 ================================================================================
+
+
+================================================================================
+ERROR REACT-ICONS - FAILED TO RESOLVE IMPORT
+================================================================================
+[Ditambahkan: 23 April 2026]
+
+MASALAH YANG TERJADI:
+================================================================================
+
+Dev server error:
+```
+Failed to run dependency scan. Error: The following dependencies are imported but could not be resolved:
+  react-icons/tb (imported by sidebar.jsx)
+  react-icons/hi (imported by sidebar.jsx)
+  react-icons/sl (imported by header.jsx)
+
+Failed to resolve import "react-icons/sl" from "src/layouts/header.jsx"
+```
+
+Import yang digunakan:
+- react-icons/bs  (Bootstrap Icons)   ← sidebar.jsx
+- react-icons/tb  (Tabler Icons)      ← sidebar.jsx
+- react-icons/fa  (Font Awesome)      ← header.jsx, sidebar.jsx
+- react-icons/fc  (Flat Color Icons)  ← header.jsx
+- react-icons/hi  (Heroicons)         ← sidebar.jsx
+- react-icons/sl  (Simple Line Icons) ← header.jsx
+
+
+PENYEBAB ERROR:
+================================================================================
+
+1. REACT-ICONS STRUCTURE
+   ──────────────────────
+   react-icons adalah 1 package yang mencakup BANYAK icon sets:
+   - Versi: ^5.6.0 (sudah terinstall di package.json)
+   - Format: /bs, /tb, /fa, /fc, /hi, /sl, /rx, /all, dll.
+   
+   Setiap folder adalah sub-package dari react-icons yang berisi icon set tertentu.
+   Contoh:
+   - react-icons/fa ← Import dari react-icons/fa (Font Awesome icons)
+   - react-icons/bs ← Import dari react-icons/bs (Bootstrap icons)
+   - dst...
+
+2. PENYEBAB VITE ERROR
+   ──────────────────
+   Error terjadi karena:
+   a) Vite cache lama yang belum ter-clear
+   b) node_modules tidak fully resolved saat vite startup
+   c) Build system belum mengenali sub-package paths
+   
+   Meskipun package.json sudah punya "react-icons": "^5.6.0",
+   Vite dependency pre-bundling belum berhasil map ke sub-packages.
+
+3. MENGAPA INI TERJADI?
+   ──────────────────
+   - react-icons/fa tidak perlu diinstall terpisah
+   - Semua icon sets sudah included dalam 1 package
+   - Masalah adalah build/resolution, bukan missing package
+
+
+SOLUSI YANG DITERAPKAN:
+================================================================================
+
+Langkah 1: npm install (verify dependencies)
+   ✓ Dependencies sudah up to date
+   ✓ Tidak ada package yang missing
+   
+Langkah 2: Clear Vite cache
+   ✓ Hapus node_modules/.vite folder
+   ✓ Vite akan rebuild cache saat startup
+   
+Langkah 3: Restart dev server
+   ✓ npm run dev
+   ✓ Dev server running di port 5174
+   ✓ ✅ ERROR RESOLVED
+
+
+VERIFIKASI SOLUSI:
+================================================================================
+
+Sebelum:
+- ❌ Failed to resolve react-icons/sl
+- ❌ Failed to resolve react-icons/tb
+- ❌ Failed to resolve react-icons/hi
+- Dev server: ERROR
+
+Sesudah:
+- ✅ Dev server ready
+- ✅ Semua imports terresolve dengan benar
+- ✅ No dependency warnings
+
+
+CARA MENCEGAH ERROR INI:
+================================================================================
+
+1. Jangan hapus package.json imports
+2. Jika dependency berubah, jalankan npm install
+3. Jika ada weird module resolution errors:
+   - rm -rf node_modules/.vite
+   - npm run dev
+
+4. Pastikan semua icon packs yang dibutuhkan ada di react-icons:
+   - react-icons adalah SATU package
+   - Tidak perlu install react-icons-bs, react-icons-fa, dll terpisah
+   - Semua sudah included dalam react-icons@^5.6.0
+
+5. Import path yang BENAR:
+   ✓ import { FaBell } from 'react-icons/fa'
+   ✓ import { TbDashboard } from 'react-icons/tb'
+   ✓ import { BsPeople } from 'react-icons/bs'
+   ✗ import FaBell from 'react-icons/fa'  (Default export tidak ada)
+
+
+TROUBLESHOOTING REFERENCE:
+================================================================================
+
+Jika error masih muncul setelah solusi di atas:
+1. rm -rf node_modules package-lock.json
+2. npm install
+3. npm run dev
+
+Atau jika masalah persisten:
+1. npm cache clean --force
+2. rm -rf node_modules package-lock.json
+3. npm install
+4. npm run dev
+
+Error ini jarang terjadi jika react-icons sudah terinstall.
+Biasanya berhubungan dengan Vite cache atau environment state.
+
+
+================================================================================
+DOCUMENTATION COMPLETE
+================================================================================

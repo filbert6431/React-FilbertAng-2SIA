@@ -5,11 +5,7 @@ export default function Error403() {
     <div style={styles.container}>
       <div style={styles.content}>
         {/* Error Image */}
-        <img 
-          src={new URL('../assets/error403.png', import.meta.url).href} 
-          alt="Error 403" 
-          style={styles.image}
-        />
+
         
         <h1 style={styles.errorCode}>403</h1>
         

@@ -10,6 +10,9 @@ import { useState } from 'react'
 import Orders from './pages/orders';
 import Customers from './pages/Customers';
 import NotFound from './pages/NotFound';
+import Error400 from './pages/Error400';
+import Error401 from './pages/Error401';
+import Error403 from './pages/Error403';
 // import reactLogo from './assets/react.svg' enggak dipakai
 // import viteLogo from '/vite.svg' enggak dipakai
 // import './App.css'
@@ -26,12 +29,19 @@ function App() {
           <Header />
 
           {/* <Dashboard /> */}
-           <Routes>
+          <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/Customers" element={<Customers />} />
 
+
             {/* Kalau kita klik selain yang diatas, dia akan menampilkan halaman notFound */}
+
+            <Route path="/Error400" element={<Error400 />} />
+            <Route path="/Error401" element={<Error401 />} />
+            <Route path="/Error403" element={<Error403 />} />
+
+           {/* Error 404 selalu berada di akhir  */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
