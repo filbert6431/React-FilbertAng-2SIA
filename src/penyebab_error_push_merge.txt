@@ -1,0 +1,172 @@
+================================================================================
+PENYEBAB ERROR PUSH / MERGE - ANALISIS LENGKAP
+================================================================================
+
+MASALAH YANG TERJADI:
+================================================================================
+
+1. ERROR: "fatal: refusing to merge unrelated histories"
+   - Saat mencoba git pull, git menolak merge
+   - Git menganggap 2 branches (local vs remote) memiliki riwayat yang tidak terkait
+
+2. ERROR: "failed to push some refs to 'github'"
+   - Saat mencoba git push, remote menolak push
+   - Error: "Updates were rejected because the tip of your current branch is 
+     behind its remote counterpart"
+   - Artinya: local branch tertinggal dari remote branch
+
+3. ERROR: "CONFLICT (add/add): Merge conflict in package-lock.json"
+   - Saat merge, ada konflik di package-lock.json
+   - 2 versi file berbeda yang tidak bisa di-merge otomatis
+
+
+PENYEBAB ERROR (ROOT CAUSE ANALYSIS):
+================================================================================
+
+1. DIVERGED HISTORY (Penyebab Utama)
+   ─────────────────────────────────
+   Local Branch: ce12f03 (pertemuan 6 part 2 belum siap)
+   Remote Branch: ac84f55 (pertemuan 6)
+   
+   Skenario yang terjadi:
+   a) Repository dibuat di GitHub (commit: ac84f55)
+   b) Clone/setup di local
+   c) Local menjalankan: git commit (membuat: ce12f03)
+   d) Remote juga menjalankan: git commit (membuat multiple commits)
+   e) Hasilnya: Kedua branch punya history yang berbeda dan diverge
+   
+   Timeline:
+   Remote: ac84f55 → 8db3bf9 → 6566e8d → ... (8 commits)
+   Local:  ac84f55 → ce12f03 (1 commit dari base yang sama)
+   
+   Meskipun punya base commit yang sama (ac84f55), history-nya berbeda sehingga
+   git menganggap mereka "unrelated histories"
+
+
+2. TIDAK ADA TRACKING BRANCH (Penyebab Kedua)
+   ──────────────────────────────────────────
+   Kondisi awal:
+   - Branch 'master' tidak tahu harus tracking ke 'github/master'
+   - Git tidak tahu upstream/remote branch mana yang seharusnya di-pull/push
+   
+   Efeknya:
+   - Saat run "git pull" → Git error: "specify which remote and branch"
+   - Saat run "git push" → Git error: "specify which remote and branch"
+   
+   SOLUSI: git branch -u github/master
+   (Set tracking: master → track github/master)
+
+
+3. BERBEDA REMOTE NAME (Faktor Pendukung)
+   ───────────────────────────────────────
+   Setup normal: git remote add origin <url>
+   Setup kamu:   git remote add github <url>
+   
+   Ini bukan error, hanya naming convention berbeda.
+   Tapi bisa menyebabkan confusion jika tidak konsisten.
+   
+   CATATAN: Tidak ada perintah "git remote add github master"
+   Yang benar: git remote add github <url>
+   (master adalah branch, bukan bagian dari remote add syntax)
+
+
+PENYEBAB CONFLICT PADA PACKAGE-LOCK.JSON:
+================================================================================
+
+Conflict terjadi karena:
+a) Local punya package-lock.json versi 1 (dari ce12f03)
+b) Remote punya package-lock.json versi 2 (dari remote commits)
+c) Saat merge, git tidak bisa auto-resolve karena both sides menambah/mengubah
+
+SOLUSI YANG DIGUNAKAN:
+git checkout --theirs package-lock.json
+→ Accept remote version (dianggap lebih "authoritative")
+
+
+SUMMARY - MASALAH & SOLUSI:
+================================================================================
+
+┌─────────────────────────────────┬────────────────────────────────────────┐
+│ MASALAH                         │ SOLUSI                                 │
+├─────────────────────────────────┼────────────────────────────────────────┤
+│ Diverged history                │ git pull --allow-unrelated-histories   │
+│ Tracking branch tidak ada       │ git branch -u github/master            │
+│ Merge conflict                  │ git checkout --theirs package-lock.json│
+│ Push ditolak (behind)           │ Pull dulu, then push                   │
+│ Commit history berbeda          │ Buat merge commit untuk reconcile      │
+└─────────────────────────────────┴────────────────────────────────────────┘
+
+
+LANGKAH-LANGKAH YANG DILAKUKAN:
+================================================================================
+
+Step 1: Setup Tracking Branch
+   Command: git branch -u github/master
+   Effect: master branch sekarang tahu upstream-nya adalah github/master
+
+Step 2: Pull dengan Allow Unrelated Histories
+   Command: git pull --allow-unrelated-histories
+   Effect: Git merge 2 history yang berbeda
+   Result: CONFLICT di package-lock.json (expected)
+
+Step 3: Resolve Conflict
+   Command: git checkout --theirs package-lock.json
+   Effect: Gunakan versi remote
+   Command: git add package-lock.json
+   Effect: Stage resolved file
+
+Step 4: Complete Merge
+   Command: git commit -m "Merge: Resolve conflicts..."
+   Effect: Create merge commit (721d627)
+
+Step 5: Push
+   Command: git push
+   Effect: Upload merge commit ke remote
+   Result: ✅ SUCCESS
+
+
+HASIL AKHIR:
+================================================================================
+
+Sebelum:
+  Local: ce12f03 (master)
+  Remote: ac84f55 (github/master)
+  Status: DIVERGED, CONFLICT
+
+Sesudah:
+  Local: 721d627 (master)
+  Remote: 721d627 (github/master)
+  Status: ✅ SYNCHRONIZED
+
+
+BEST PRACTICES untuk menghindari masalah ini:
+================================================================================
+
+1. Saat clone repo, langsung setup tracking:
+   git clone <url>
+   (Git auto-setup tracking untuk branch default)
+
+2. Jika setup manual, selalu define upstream:
+   git branch -u origin/main (atau branch apapun)
+
+3. Gunakan remote naming convention standard:
+   git remote add origin <url>  ← Standard
+   (Bukan: github, bitbucket, server, etc)
+
+4. Commit regularly dan push regularly:
+   Hindari long-lived unpushed branches
+
+5. Saat ada diverged history, langsung resolve:
+   git pull --allow-unrelated-histories
+   (Jangan biarkan terakumulasi)
+
+6. Selalu handle merge conflicts dengan hati-hati:
+   Review conflict sebelum commit
+   (Jangan asal --theirs atau --ours)
+
+
+================================================================================
+Dokumentasi dibuat pada: 22 April 2026
+Repository: React-FilbertAng-2SIA
+Issue Resolved: ✅ Push/Merge Error
+================================================================================
