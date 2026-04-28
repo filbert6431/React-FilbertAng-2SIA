@@ -1,22 +1,10 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import Dashboard from "./pages/Dashboard";
 import { Link, Route, Routes } from "react-router-dom"
 import './assets/tailwind.css';
+import { Suspense } from 'react';
+import Loading from './components/loading';
 
-import { useState } from 'react'
-import Orders from './pages/orders';
-import Customers from './pages/Customers';
-import NotFound from './pages/NotFound';
-import Error400 from './pages/Error400';
-import Error401 from './pages/Error401';
-import Error403 from './pages/Error403';
-import MainLayout from './layouts/MainLayout';
-
-import AuthLayout from './layouts/AuthLayout';
-import Login from './pages/Auth/login';
-import Register from './pages/Auth/Register';
-import Forgot from './pages/Auth/Forgot';
 // import reactLogo from './assets/react.svg' enggak dipakai
 // import viteLogo from '/vite.svg' enggak dipakai
 // import './App.css'
@@ -24,9 +12,29 @@ import Forgot from './pages/Auth/Forgot';
 export default function App() {
   // const [count, setCount] = useState(0) enggak dipakai
 
+  // react lazy digunakan agar misalnya saat akses halaman login
+  // dia tidak ngeload halaman Orders / Customers
+
+const MainLayout = React.lazy(() => import("./layouts/MainLayout")) 
+const Dashboard = React.lazy(() => import("./pages/Dashboard"))
+const Orders = React.lazy(() => import("./pages/Orders"))
+const Customers = React.lazy(() => import("./pages/Customers"))
+
+const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"))
+const Login = React.lazy(() => import("./pages/Auth/Login"))
+const Register = React.lazy(() => import("./pages/Auth/Register"))
+const Forgot = React.lazy(() => import("./pages/Auth/Forgot"))
+
+
+const Error400 = React.lazy(() => import("./pages/Error400"))
+const Error401 = React.lazy(() => import("./pages/Error401"))
+const Error403 = React.lazy(() => import("./pages/Error403"))
+const NotFound = React.lazy(() => import("./pages/NotFound"))
+
 
   // kalau kita tambahkan comment 1 baris setelah return.. dia langsung error
   return (
+    <Suspense fallback={<Loading />}>
     <Routes>
       <Route element={<MainLayout />}>
         <Route path="/" element={<Dashboard />} />
@@ -50,8 +58,8 @@ export default function App() {
             <Route path="/register" element={<Register/>} />
             <Route path="/forgot" element={<Forgot/>} />
       </Route>
-
     </Routes>
+    </Suspense>
 
   )
 }
