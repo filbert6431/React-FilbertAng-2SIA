@@ -1,78 +1,59 @@
-import { GiDeadHead } from "react-icons/gi"; 
-import { GiCookingPot } from "react-icons/gi"; 
 import { FaShoppingCart, FaTruck, FaBan, FaDollarSign } from "react-icons/fa";
-import PageHeader from "../components/PageHeader";
-
 
 export default function Dashboard() {
-    return (
-        <div id="dashboard-container">
-            <PageHeader />
-            <div id="dashboard-grid" className="p-5 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-                <div id="dashboard-orders" className="flex items-center space-x-5 bg-white rounded-lg shadow-md p-4">
-                    <div id="orders-icon" className="bg-hijau rounded-full p-4 text-white">
-                        <FaShoppingCart className="text-3xl" />
-                    </div>
-                    <div id="orders-info" className="flex flex-col">
-                        <span id="orders-count" className="text-2xl font-bold">75</span>
-                        <span id="orders-text" className="text-gray-400">Total Orders</span>
-                    </div>
-                </div>
+  return (
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-6">
+        Dashboard Coffee Shop ☕
+      </h1>
 
-                <div id="dashboard-delivered" className="flex items-center space-x-5 bg-white rounded-lg shadow-md p-4">
-                    <div id="delivered-icon" className="bg-hijau rounded-full p-4 text-white">
-                        <FaTruck className="text-xl" />
-                    </div>
-                    <div id="delivered-info" className="flex flex-col">
-                        <span id="delivered-count" className="text-2xl font-bold">175</span>
-                        <span id="delivered-text" className="text-gray-400">Total Delivered</span>
-                    </div>
-                </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
 
-                <div id="dashboard-canceled" className="flex items-center space-x-5 bg-white rounded-lg shadow-md p-4">
-                    <div id="canceled-icon" className="bg-merah rounded-full p-4 text-white">
-                        <FaBan className="text-xl" />
-                    </div>
-                    <div id="canceled-info" className="flex flex-col">
-                        <span id="canceled-count" className="text-2xl font-bold">40</span>
-                        <span id="canceled-text" className="text-gray-400">Total Canceled</span>
-                    </div>
-                </div>
-
-                <div id="dashboard-revenue" className="flex items-center space-x-5 bg-white rounded-lg shadow-md p-4">
-                    <div id="revenue-icon" className="bg-kuning rounded-full p-4 text-white">
-                        <FaDollarSign className="text-xl" />
-                    </div>
-                    <div id="revenue-info" className="flex flex-col">
-                        <span id="revenue-amount" className="text-2xl font-bold">Rp.128</span>
-                        <span id="revenue-text" className="text-gray-400">Total Revenue</span>
-
-                    </div>
-                </div>
-
-                <div id="dashboard-ongoing" className="flex items-center space-x-5 bg-white rounded-lg shadow-md p-4">
-                    <div id="ongoing-icon" className="bg-kuning rounded-full p-4 text-white">
-                        <GiCookingPot className="text-5xl" />
-                      
-                    </div>
-                    <div id="revenue-info" className="flex flex-col">
-                        <span id="ongoing-amount" className="text-2xl font-bold">1346 Orders </span>
-                        <span id="ongoing-text" className="text-gray-400">Cooks Ongoing</span>
-
-                    </div>
-                </div>
-
-                <div id="dashboard-OrangHidup" className="flex items-center space-x-5 bg-white rounded-lg shadow-md p-4">
-                    <div id="OrangHidup-icon" className="bg-kuning rounded-full p-4 text-white">
-                        <GiDeadHead className="text-4xl" />
-                    </div>
-                    <div id="OrangHidup-info" className="flex flex-col">
-                        <span id="OrangHidup-amount" className="text-xl font-bold">13 orang meninggal</span>
-                        <span id="OrangHidup-text" className="text-gray-400">Total kerugian</span>
-
-                    </div>
-                </div>
-            </div>
+        {/* Total Orders */}
+        <div className="flex items-center justify-between bg-white p-5 rounded-xl shadow">
+          <div>
+            <p className="text-gray-500 text-sm">Total Orders</p>
+            <h2 className="text-xl font-bold mt-1">75</h2>
+          </div>
+          <div className="bg-blue-500 text-white p-3 rounded-full text-xl">
+            <FaShoppingCart />
+          </div>
         </div>
-    );
+
+        {/* Total Delivered */}
+        <div className="flex items-center justify-between bg-white p-5 rounded-xl shadow">
+          <div>
+            <p className="text-gray-500 text-sm">Total Delivered</p>
+            <h2 className="text-xl font-bold mt-1">175</h2>
+          </div>
+          <div className="bg-green-500 text-white p-3 rounded-full text-xl">
+            <FaTruck />
+          </div>
+        </div>
+
+        {/* Total Canceled */}
+        <div className="flex items-center justify-between bg-white p-5 rounded-xl shadow">
+          <div>
+            <p className="text-gray-500 text-sm">Total Canceled</p>
+            <h2 className="text-xl font-bold mt-1">40</h2>
+          </div>
+          <div className="bg-red-500 text-white p-3 rounded-full text-xl">
+            <FaBan />
+          </div>
+        </div>
+
+        {/* Total Revenue */}
+        <div className="flex items-center justify-between bg-white p-5 rounded-xl shadow">
+          <div>
+            <p className="text-gray-500 text-sm">Total Revenue</p>
+            <h2 className="text-xl font-bold mt-1">Rp 128.000</h2>
+          </div>
+          <div className="bg-yellow-500 text-white p-3 rounded-full text-xl">
+            <FaDollarSign />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
 }

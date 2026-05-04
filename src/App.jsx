@@ -1,5 +1,4 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
 import { Link, Route, Routes } from "react-router-dom"
 import './assets/tailwind.css';
 import { Suspense } from 'react';
