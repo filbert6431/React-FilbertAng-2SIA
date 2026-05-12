@@ -1,6 +1,5 @@
-import { FaBell, FaSearch } from "react-icons/fa";
+import { FaBell, FaCog, FaSearch } from "react-icons/fa";
 import { FcAreaChart } from "react-icons/fc";
-import { SlSettings } from "react-icons/sl";
 
 export default function Header() {
     return (
@@ -27,7 +26,7 @@ export default function Header() {
                     <FcAreaChart />
                 </div>
                 <div id="settings-icon" className="p-3 bg-red-100 rounded-2xl text-red-500 cursor-pointer">
-                    <SlSettings />
+                    <FaCog />
                 </div>
              
 
