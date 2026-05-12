@@ -54,6 +54,13 @@ export default function Sidebar() {
                                 <BsPeople className="text-xl mr-2" />
                                 Customers</NavLink>
                         </li>
+
+                        <li>
+                            <NavLink id="error-1" className={menuClass}
+                                to="/Products">
+                                <BsPeople className="text-xl mr-2" />
+                                Products</NavLink>
+                        </li>
                     </ul>
                 </div>
                 <div className="mt-10">

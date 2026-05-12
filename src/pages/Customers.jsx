@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PageHeader from "../components/PageHeader";
 import customersData from "../data/customersData.json";
+import { Link } from "react-router-dom";
 
 export default function Customers() {
     const [customers, setCustomers] = useState(customersData);
@@ -153,7 +154,9 @@ export default function Customers() {
                         {customers.map((customer, index) => (
                             <tr key={index} className="border-b border-slate-200 hover:bg-slate-50 transition">
                                 <td className="px-3 py-3 text-slate-800 text-sm">{customer.id}</td>
+                                 <Link to={`/Customers/${customer.id}`} className="text-emerald-400 hover:text-emerald-500">
                                 <td className="px-3 py-3 text-slate-800 text-sm">{customer.name}</td>
+                                </Link>
                                 <td className="px-3 py-3 text-slate-800 text-sm">{customer.email}</td>
                                 <td className="px-3 py-3 text-slate-800 text-sm">{customer.phone}</td>
                                 <td className="px-3 py-3 text-slate-800 text-sm">
