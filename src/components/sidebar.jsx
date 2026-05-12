@@ -1,6 +1,5 @@
 import { BsPeople } from "react-icons/bs";
-import { MdDashboard } from "react-icons/md";
-import { FaClipboardList } from "react-icons/fa";
+import { FaClipboardList, FaTachometerAlt } from "react-icons/fa";
 import { HiAcademicCap } from "react-icons/hi";
 import { Link, NavLink } from "react-router-dom";
 
@@ -36,7 +35,7 @@ export default function Sidebar() {
                                 to="/">
                                 {/* //to adalah element untuk pindah halaman, dalam kasus ini ia pindah ke dashboard
                                 //   karena sudah kita set kalau " / " dia pergi ke dashboard, di halaman amain */}
-                                <MdDashboard className="text-xl mr-2 " />
+                                <FaTachometerAlt className="text-xl mr-2 " />
                                 Dashboard
                             </NavLink>
                         </li>

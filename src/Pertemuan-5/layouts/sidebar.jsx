@@ -1,6 +1,5 @@
 import { BsPeople } from "react-icons/bs"; 
-import { TbDashboardOff } from "react-icons/tb"; 
-import { FaClipboardList } from "react-icons/fa"; 
+import { FaClipboardList, FaTachometerAlt } from "react-icons/fa"; 
 import { HiAcademicCap } from "react-icons/hi";
 
 export default function Sidebar() {
@@ -21,7 +20,7 @@ export default function Sidebar() {
                     <li>
 	                    <div id="menu-1" className="hover:text-hijau flex cursor-pointer items-center
                          rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold">
-                        <TbDashboardOff className="text-xl mr-2 "/>
+                        <FaTachometerAlt className="text-xl mr-2 "/>
                          Dashboard</div>
 	                  </li>
                     <li>
