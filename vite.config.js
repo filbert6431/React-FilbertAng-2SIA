@@ -5,17 +5,21 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    react(), 
+    react(),
     tailwindcss()
   ],
   optimizeDeps: {
     include: [
-      'react-icons/bs',
-      'react-icons/fa',
-      'react-icons/hi',
-      'react-icons/fc',
-      'react-icons/sl',
-      'react-icons/tb'
+      'react-icons'
     ]
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-icons': ['react-icons']
+        }
+      }
+    }
   }
 })
