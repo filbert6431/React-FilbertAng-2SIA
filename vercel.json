@@ -3,10 +3,9 @@
   "outputDirectory": "dist",
   "framework": null,
   "installCommand": "npm install",
-  "nodeVersion": "18.x",
-  "build": {
-    "env": {
-      "NODE_OPTIONS": "--max-old-space-size=4096"
+  "functions": {
+    "*.js": {
+      "runtime": "nodejs18.x"
     }
   }
 }
