@@ -8,4 +8,14 @@ export default defineConfig({
     react(), 
     tailwindcss()
   ],
+  optimizeDeps: {
+    include: [
+      'react-icons/bs',
+      'react-icons/fa',
+      'react-icons/hi',
+      'react-icons/fc',
+      'react-icons/sl',
+      'react-icons/tb'
+    ]
+  }
 })
