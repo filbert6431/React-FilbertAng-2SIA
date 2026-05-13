@@ -2,9 +2,6 @@ import frameworkData from "./framework.json";
 import { useState } from "react";
 
 export default function frameworkListSearchFilter() {
-    const [searchTerm, setSearchTerm] = useState("");
-    const [selectedTag, setSelectedTag] = useState("");
-
 
 
     /*Inisialisasi DataForm*/
