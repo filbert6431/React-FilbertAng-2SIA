@@ -19,7 +19,6 @@ export default function Sidebar() {
         <div id="sidebar" className="flex min-h-screen w-90 flex-col bg-white p-10 shadow-lg">
             {/* Logo */}
             <div id="sidebar-logo" className="flex flex-col">
-                <HiAcademicCap className="text-7xl" />
                 <span id="logo-title" className="font-poppins text-[48px] text-gray-900">
                     Sedap <b id="logo-dot" className="text-hijau">.</b>
                 </span>
