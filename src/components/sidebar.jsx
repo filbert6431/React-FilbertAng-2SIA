@@ -1,6 +1,5 @@
 import { BsPeople } from "react-icons/bs";
 import { FaClipboardList, FaTachometerAlt } from "react-icons/fa";
-import { HiAcademicCap } from "react-icons/hi";
 import { Link, NavLink } from "react-router-dom";
 
 export default function Sidebar() {
