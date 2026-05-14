@@ -35,7 +35,7 @@ PENYEBAB ERROR (ROOT CAUSE ANALYSIS):
    d) Remote juga menjalankan: git commit (membuat multiple commits)
    e) Hasilnya: Kedua branch punya history yang berbeda dan diverge
    
-   Timeline:
+   Timelinee:
    Remote: ac84f55 → 8db3bf9 → 6566e8d → ... (8 commits)
    Local:  ac84f55 → ce12f03 (1 commit dari base yang sama)
    
