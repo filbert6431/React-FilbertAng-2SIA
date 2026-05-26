@@ -65,8 +65,16 @@ export default function Sidebar() {
                                 <BsPeople className="text-xl mr-2" />
                                 Components</NavLink>
                         </li>
+
+                                                <li>
+                            <NavLink id="menu-3" className={menuClass}
+                                to="/FiturXyz">
+                                <BsPeople className="text-xl mr-2" />
+                                FiturXyz</NavLink>
+                        </li>
                     </ul>
                 </div>
+
                 <div className="mt-10">
                     <h1> Halaman Error </h1>
                     <ul>
