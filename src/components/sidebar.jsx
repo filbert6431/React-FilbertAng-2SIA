@@ -92,20 +92,6 @@ export default function Sidebar() {
                                 Error401</NavLink>
                         </li>
 
-                        <li>
-                            <NavLink id="error-3" className={menuClass}
-                                to="/Error403">
-                                <BsPeople className="text-xl mr-2" />
-                                Error403</NavLink>
-                        </li>
-
-                        <li>
-                            <NavLink id="error-4" className={menuClass}
-                                to="/Error404">
-                                <BsPeople className="text-xl mr-2" />
-                                Error404</NavLink>
-                        </li>
-
                     </ul>
                 </div>
             </div>
