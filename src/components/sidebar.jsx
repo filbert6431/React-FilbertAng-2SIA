@@ -49,7 +49,7 @@ export default function Sidebar() {
                             <NavLink id="menu-3" className={menuClass}
                                 to="/customers">
                                 <BsPeople className="text-xl mr-2" />
-                                Customers</NavLink>
+                                Customer</NavLink>
                         </li>
 
                         <li>
