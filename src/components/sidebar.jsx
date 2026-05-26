@@ -65,8 +65,16 @@ export default function Sidebar() {
                                 <BsPeople className="text-xl mr-2" />
                                 Components</NavLink>
                         </li>
+
+                                                <li>
+                            <NavLink id="menu-3" className={menuClass}
+                                to="/FiturXyz">
+                                <BsPeople className="text-xl mr-2" />
+                                FiturXyz</NavLink>
+                        </li>
                     </ul>
                 </div>
+
                 <div className="mt-10">
                     <h1> Halaman Error </h1>
                     <ul>
@@ -82,20 +90,6 @@ export default function Sidebar() {
                                 to="/Error401">
                                 <BsPeople className="text-xl mr-2" />
                                 Error401</NavLink>
-                        </li>
-
-                        <li>
-                            <NavLink id="error-3" className={menuClass}
-                                to="/Error403">
-                                <BsPeople className="text-xl mr-2" />
-                                Error403</NavLink>
-                        </li>
-
-                        <li>
-                            <NavLink id="error-4" className={menuClass}
-                                to="/Error404">
-                                <BsPeople className="text-xl mr-2" />
-                                Error404</NavLink>
                         </li>
 
                     </ul>
