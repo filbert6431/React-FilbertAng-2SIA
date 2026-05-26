@@ -3,7 +3,7 @@ import { FaClipboardList, FaTachometerAlt } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 
 export default function Sidebar() {
-const filbert = "tidak ada";
+    const filbert = "tidak ada";
 
     // untuk menujukkan kita sedang berada di halaman itu
     // dengan cursor pointer =, dia akan 
@@ -57,6 +57,13 @@ const filbert = "tidak ada";
                                 to="/Products">
                                 <BsPeople className="text-xl mr-2" />
                                 Products</NavLink>
+                        </li>
+
+                        <li>
+                            <NavLink id="menu-3" className={menuClass}
+                                to="/components">
+                                <BsPeople className="text-xl mr-2" />
+                                Components</NavLink>
                         </li>
                     </ul>
                 </div>

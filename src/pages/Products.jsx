@@ -14,7 +14,7 @@
             <div className="min-h-screen bg-gray-100 p-8">
                 <div className="max-w-7xl mx-auto bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
 
-                    {/* HEADER */}
+                    {/* HEADER */} 
                     <div className="px-8 py-6 border-b border-gray-200 bg-gradient-to-r from-indigo-600 to-purple-600">
                         <h1 className="text-3xl font-bold text-white">
                             Product Management

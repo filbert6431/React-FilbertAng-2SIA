@@ -22,6 +22,8 @@ export default function App() {
   const Products = React.lazy(() => import("./pages/Products"))
   const ProductDetail = React.lazy(() => import("./pages/ProductDetail"))
 
+  const Components = React.lazy(() => import("./pages/Components"))
+
   const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"))
   const Login = React.lazy(() => import("./pages/Auth/Login"))
   const Register = React.lazy(() => import("./pages/Auth/Register"))
@@ -46,6 +48,7 @@ export default function App() {
           <Route path="/Customers/:id" element={<CustomersDetail />} />
           <Route path="/Products" element={<Products />} />
           <Route path="/products/:id" element={<ProductDetail />} />
+          <Route path="/components" element={<Components />} />
 
 
           {/* Kalau kita klik selain yang diatas, dia akan menampilkan halaman notFound */}
