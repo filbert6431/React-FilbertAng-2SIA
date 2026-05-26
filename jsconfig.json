@@ -1,0 +1,11 @@
+// sebagai konfigurasi, saat kita search Ui yang kita inginkan, dapat kita temukan
+// di folder SRC kita
+
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
