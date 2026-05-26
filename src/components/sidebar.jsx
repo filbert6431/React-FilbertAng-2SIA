@@ -66,7 +66,7 @@ export default function Sidebar() {
                                 Components</NavLink>
                         </li>
 
-                                                <li>
+                        <li>
                             <NavLink id="menu-3" className={menuClass}
                                 to="/FiturXyz">
                                 <BsPeople className="text-xl mr-2" />
@@ -88,6 +88,20 @@ export default function Sidebar() {
                         <li>
                             <NavLink id="error-2" className={menuClass}
                                 to="/Error401">
+                                <BsPeople className="text-xl mr-2" />
+                                Error401</NavLink>
+                        </li>
+
+                        <li>
+                            <NavLink id="error-2" className={menuClass}
+                                to="/Error402">
+                                <BsPeople className="text-xl mr-2" />
+                                Error401</NavLink>
+                        </li>
+
+                        <li>
+                            <NavLink id="error-2" className={menuClass}
+                                to="/Error403">
                                 <BsPeople className="text-xl mr-2" />
                                 Error401</NavLink>
                         </li>
