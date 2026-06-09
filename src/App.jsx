@@ -24,6 +24,7 @@ export default function App() {
 
   const FiturXyz = React.lazy(() => import("./pages/FiturXyz"))
 
+  const Notes = React.lazy(() => import("./pages/notes"))
 
   const Components = React.lazy(() => import("./pages/Components"))
 
@@ -53,6 +54,7 @@ export default function App() {
           <Route path="/products/:id" element={<ProductDetail />} />
           <Route path="/components" element={<Components />} />
           <Route path="/FiturXyz" element={<FiturXyz/>} />
+          <Route path ="Notes" element={<Notes/>}/>
 
 
           {/* Kalau kita klik selain yang diatas, dia akan menampilkan halaman notFound */}
